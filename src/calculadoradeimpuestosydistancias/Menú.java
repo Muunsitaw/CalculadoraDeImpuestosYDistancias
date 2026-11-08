@@ -36,7 +36,7 @@ public class Menú extends javax.swing.JFrame {
         Salir = new javax.swing.JButton();
         Impuestos = new javax.swing.JButton();
         Distancias = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Título2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,11 +69,12 @@ public class Menú extends javax.swing.JFrame {
         Distancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Distancia.png"))); // NOI18N
         panel.add(Distancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 410, -1, -1));
 
-        Salir.setBackground(new java.awt.Color(0, 51, 51));
-        Salir.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        Salir.setBackground(new java.awt.Color(0, 15, 0));
+        Salir.setFont(new java.awt.Font("MS PGothic", 1, 36)); // NOI18N
+        Salir.setForeground(new java.awt.Color(0, 255, 106));
         Salir.setText("Salir");
-        Salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 153), 4, true));
-        panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 750, 150, 60));
+        Salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 4, true));
+        panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 760, 130, 50));
 
         Impuestos.setBackground(new java.awt.Color(1, 40, 47));
         Impuestos.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
@@ -91,10 +92,10 @@ public class Menú extends javax.swing.JFrame {
         Distancias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153)));
         panel.add(Distancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Pristina", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 193, 53));
-        jLabel1.setText("Impuestos y Distancias");
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 400, -1));
+        Título2.setFont(new java.awt.Font("Pristina", 0, 48)); // NOI18N
+        Título2.setForeground(new java.awt.Color(0, 193, 53));
+        Título2.setText("Impuestos y Distancias");
+        panel.add(Título2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 400, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo.png"))); // NOI18N
         panel.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1570, 920));
@@ -148,7 +149,7 @@ public class Menú extends javax.swing.JFrame {
     private javax.swing.JLabel Instrucción;
     private javax.swing.JButton Salir;
     private javax.swing.JLabel Título1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Título2;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }
