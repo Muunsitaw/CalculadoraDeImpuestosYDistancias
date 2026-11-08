@@ -204,7 +204,7 @@ public class Impuestos extends javax.swing.JFrame {
         LeyR.setBackground(new java.awt.Color(0, 35, 15));
         LeyR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         LeyR.setForeground(new java.awt.Color(120, 130, 120));
-        LeyR.setText("jLabel1");
+        LeyR.setText("\"\"");
         LeyR.setOpaque(true);
         Resultados.add(LeyR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 490, -1));
 
@@ -218,7 +218,7 @@ public class Impuestos extends javax.swing.JFrame {
         CondicionesR.setBackground(new java.awt.Color(0, 35, 15));
         CondicionesR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         CondicionesR.setForeground(new java.awt.Color(120, 130, 120));
-        CondicionesR.setText("hujik");
+        CondicionesR.setText("\"\"");
         CondicionesR.setOpaque(true);
         Resultados.add(CondicionesR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 390, -1));
 
@@ -236,12 +236,12 @@ public class Impuestos extends javax.swing.JFrame {
         CostoiL.setOpaque(true);
         Resultados.add(CostoiL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, -1));
 
-        TotalL.setBackground(new java.awt.Color(0, 35, 15));
+        TotalL.setBackground(new java.awt.Color(0, 60, 25));
         TotalL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         TotalL.setForeground(new java.awt.Color(0, 255, 120));
         TotalL.setText("Total:");
         TotalL.setOpaque(true);
-        Resultados.add(TotalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 550, 40));
+        Resultados.add(TotalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 540, 40));
 
         ImpuestoL.setBackground(new java.awt.Color(0, 35, 15));
         ImpuestoL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -260,21 +260,21 @@ public class Impuestos extends javax.swing.JFrame {
         CostoiR.setBackground(new java.awt.Color(0, 35, 15));
         CostoiR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         CostoiR.setForeground(new java.awt.Color(120, 130, 120));
-        CostoiR.setText("jLabel1");
+        CostoiR.setText("\"\"");
         CostoiR.setOpaque(true);
         Resultados.add(CostoiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 390, -1));
 
         PorcentajeiR.setBackground(new java.awt.Color(0, 35, 15));
         PorcentajeiR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         PorcentajeiR.setForeground(new java.awt.Color(120, 130, 120));
-        PorcentajeiR.setText("jLabel2");
+        PorcentajeiR.setText("\"\"");
         PorcentajeiR.setOpaque(true);
         Resultados.add(PorcentajeiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 260, -1));
 
         ImpuestoR.setBackground(new java.awt.Color(0, 35, 15));
         ImpuestoR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         ImpuestoR.setForeground(new java.awt.Color(120, 130, 120));
-        ImpuestoR.setText("jLabel3");
+        ImpuestoR.setText("\"\"");
         ImpuestoR.setOpaque(true);
         Resultados.add(ImpuestoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 310, -1));
 

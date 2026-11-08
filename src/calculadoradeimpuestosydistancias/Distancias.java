@@ -13,7 +13,7 @@ public class Distancias extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Distancias.class.getName());
 
     /**
-     * Creates new form Distancias
+     * Creates new form Impuestos
      */
     public Distancias() {
         initComponents();
@@ -28,21 +28,268 @@ public class Distancias extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Panel = new javax.swing.JPanel();
+        Título = new javax.swing.JLabel();
+        Título2 = new javax.swing.JLabel();
+        Línea = new javax.swing.JLabel();
+        Volver = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
+        Calcular = new javax.swing.JPanel();
+        Instrucción = new javax.swing.JLabel();
+        LíneaCalcular = new javax.swing.JLabel();
+        X1L = new javax.swing.JLabel();
+        Y1L = new javax.swing.JLabel();
+        X2L = new javax.swing.JLabel();
+        CalcularB = new javax.swing.JButton();
+        x1T = new javax.swing.JTextField();
+        Limpiar = new javax.swing.JButton();
+        Y2L = new javax.swing.JLabel();
+        Y1T = new javax.swing.JTextField();
+        X2T = new javax.swing.JTextField();
+        Y2T = new javax.swing.JTextField();
+        CoorT1 = new javax.swing.JLabel();
+        CoorT2 = new javax.swing.JLabel();
+        Resultados = new javax.swing.JPanel();
+        ResultadosL = new javax.swing.JLabel();
+        LíneaRe = new javax.swing.JLabel();
+        Coordenada1R = new javax.swing.JLabel();
+        Coordenada1L = new javax.swing.JLabel();
+        Coordenada2R = new javax.swing.JLabel();
+        Coordenada2L = new javax.swing.JLabel();
+        DeltaxL = new javax.swing.JLabel();
+        DistanciaL = new javax.swing.JLabel();
+        DeltayL = new javax.swing.JLabel();
+        DeltaxR = new javax.swing.JLabel();
+        DeltayR = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Distancias");
+        setName("Impuestos"); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Panel.setPreferredSize(new java.awt.Dimension(1564, 1006));
+        Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Título.setFont(new java.awt.Font("Pristina", 1, 66)); // NOI18N
+        Título.setForeground(new java.awt.Color(255, 255, 255));
+        Título.setText("Calcular");
+        Panel.add(Título, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 240, 70));
+
+        Título2.setFont(new java.awt.Font("Pristina", 1, 66)); // NOI18N
+        Título2.setForeground(new java.awt.Color(0, 193, 53));
+        Título2.setText("distancias");
+        Panel.add(Título2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 140, -1, -1));
+
+        Línea.setBackground(new java.awt.Color(0, 193, 53));
+        Línea.setOpaque(true);
+        Panel.add(Línea, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 1230, 10));
+
+        Volver.setBackground(new java.awt.Color(0, 15, 0));
+        Volver.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        Volver.setForeground(new java.awt.Color(0, 255, 106));
+        Volver.setText("Volver al menú");
+        Volver.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 5, true));
+        Panel.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 710, 190, 50));
+
+        Salir.setBackground(new java.awt.Color(0, 15, 0));
+        Salir.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        Salir.setForeground(new java.awt.Color(0, 255, 106));
+        Salir.setText("Salir");
+        Salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 5, true));
+        Panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 710, 130, 50));
+
+        Calcular.setBackground(new java.awt.Color(0, 15, 0));
+        Calcular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 3, true));
+        Calcular.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Instrucción.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        Instrucción.setForeground(new java.awt.Color(0, 255, 106));
+        Instrucción.setText("Ingrese la siguiente información:");
+        Calcular.add(Instrucción, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 460, 40));
+
+        LíneaCalcular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        LíneaCalcular.setForeground(new java.awt.Color(0, 255, 106));
+        LíneaCalcular.setText("_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________");
+        Calcular.add(LíneaCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 40, 760, -1));
+
+        X1L.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        X1L.setForeground(new java.awt.Color(255, 255, 255));
+        X1L.setText("Valor de x1:");
+        Calcular.add(X1L, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, 40));
+
+        Y1L.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        Y1L.setForeground(new java.awt.Color(255, 255, 255));
+        Y1L.setText("Valor de y1:");
+        Calcular.add(Y1L, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 230, 50));
+
+        X2L.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        X2L.setForeground(new java.awt.Color(255, 255, 255));
+        X2L.setText("Valor de x2:");
+        Calcular.add(X2L, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        CalcularB.setBackground(new java.awt.Color(0, 15, 0));
+        CalcularB.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        CalcularB.setForeground(new java.awt.Color(0, 255, 106));
+        CalcularB.setText("Calcular");
+        CalcularB.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 3, true));
+        CalcularB.addActionListener(this::CalcularBActionPerformed);
+        Calcular.add(CalcularB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 120, 40));
+
+        x1T.setBackground(new java.awt.Color(0, 35, 15));
+        x1T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        x1T.setForeground(new java.awt.Color(120, 130, 120));
+        x1T.setBorder(null);
+        x1T.addActionListener(this::x1TActionPerformed);
+        Calcular.add(x1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 260, 40));
+
+        Limpiar.setBackground(new java.awt.Color(0, 15, 0));
+        Limpiar.setFont(new java.awt.Font("MS PGothic", 1, 18)); // NOI18N
+        Limpiar.setForeground(new java.awt.Color(0, 255, 106));
+        Limpiar.setText("Limpiar");
+        Limpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 3, true));
+        Limpiar.addActionListener(this::LimpiarActionPerformed);
+        Calcular.add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 120, 40));
+
+        Y2L.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        Y2L.setForeground(new java.awt.Color(255, 255, 255));
+        Y2L.setText("Valor de x2:");
+        Calcular.add(Y2L, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+
+        Y1T.setBackground(new java.awt.Color(0, 35, 15));
+        Y1T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        Y1T.setForeground(new java.awt.Color(120, 130, 120));
+        Y1T.setBorder(null);
+        Y1T.addActionListener(this::Y1TActionPerformed);
+        Calcular.add(Y1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 250, 40));
+
+        X2T.setBackground(new java.awt.Color(0, 35, 15));
+        X2T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        X2T.setForeground(new java.awt.Color(120, 130, 120));
+        X2T.setBorder(null);
+        Calcular.add(X2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 260, 40));
+
+        Y2T.setBackground(new java.awt.Color(0, 35, 15));
+        Y2T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        Y2T.setForeground(new java.awt.Color(120, 130, 120));
+        Y2T.setBorder(null);
+        Calcular.add(Y2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 250, 40));
+
+        CoorT1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        CoorT1.setForeground(new java.awt.Color(0, 193, 53));
+        CoorT1.setText("Coordenada 1:");
+        Calcular.add(CoorT1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 62, 160, 40));
+
+        CoorT2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        CoorT2.setForeground(new java.awt.Color(0, 193, 53));
+        CoorT2.setText("Coordenada 2:");
+        Calcular.add(CoorT2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+
+        Panel.add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 610, 420));
+
+        Resultados.setBackground(new java.awt.Color(0, 24, 11));
+        Resultados.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 193, 53), 4, true));
+        Resultados.setEnabled(false);
+        Resultados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ResultadosL.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        ResultadosL.setForeground(new java.awt.Color(0, 193, 53));
+        ResultadosL.setText("Resultados:");
+        Resultados.add(ResultadosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 170, 30));
+
+        LíneaRe.setBackground(new java.awt.Color(255, 255, 255));
+        LíneaRe.setForeground(new java.awt.Color(0, 193, 53));
+        LíneaRe.setText("___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________");
+        Resultados.add(LíneaRe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 40, -1, -1));
+
+        Coordenada1R.setBackground(new java.awt.Color(0, 35, 15));
+        Coordenada1R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        Coordenada1R.setForeground(new java.awt.Color(120, 130, 120));
+        Coordenada1R.setText("jLabel1");
+        Coordenada1R.setOpaque(true);
+        Resultados.add(Coordenada1R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 370, -1));
+
+        Coordenada1L.setBackground(new java.awt.Color(0, 35, 15));
+        Coordenada1L.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Coordenada1L.setForeground(new java.awt.Color(255, 255, 255));
+        Coordenada1L.setText("Coordenada 1:");
+        Coordenada1L.setOpaque(true);
+        Resultados.add(Coordenada1L, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, -1));
+
+        Coordenada2R.setBackground(new java.awt.Color(0, 35, 15));
+        Coordenada2R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        Coordenada2R.setForeground(new java.awt.Color(120, 130, 120));
+        Coordenada2R.setText("hujik");
+        Coordenada2R.setOpaque(true);
+        Resultados.add(Coordenada2R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 370, -1));
+
+        Coordenada2L.setBackground(new java.awt.Color(0, 35, 15));
+        Coordenada2L.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Coordenada2L.setForeground(new java.awt.Color(255, 255, 255));
+        Coordenada2L.setText("Coordenada 2:");
+        Coordenada2L.setOpaque(true);
+        Resultados.add(Coordenada2L, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 170, -1));
+
+        DeltaxL.setBackground(new java.awt.Color(0, 35, 15));
+        DeltaxL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        DeltaxL.setForeground(new java.awt.Color(255, 255, 255));
+        DeltaxL.setText("ΔX:");
+        DeltaxL.setOpaque(true);
+        Resultados.add(DeltaxL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 50, -1));
+
+        DistanciaL.setBackground(new java.awt.Color(0, 60, 25));
+        DistanciaL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        DistanciaL.setForeground(new java.awt.Color(0, 255, 120));
+        DistanciaL.setText("Distancia:");
+        DistanciaL.setOpaque(true);
+        Resultados.add(DistanciaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 540, 40));
+
+        DeltayL.setBackground(new java.awt.Color(0, 35, 15));
+        DeltayL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        DeltayL.setForeground(new java.awt.Color(255, 255, 255));
+        DeltayL.setText("ΔY: ");
+        DeltayL.setOpaque(true);
+        Resultados.add(DeltayL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 50, -1));
+
+        DeltaxR.setBackground(new java.awt.Color(0, 35, 15));
+        DeltaxR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        DeltaxR.setForeground(new java.awt.Color(120, 130, 120));
+        DeltaxR.setText("jLabel1");
+        DeltaxR.setOpaque(true);
+        Resultados.add(DeltaxR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 490, -1));
+
+        DeltayR.setBackground(new java.awt.Color(0, 35, 15));
+        DeltayR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        DeltayR.setForeground(new java.awt.Color(120, 130, 120));
+        DeltayR.setText("jLabel2");
+        DeltayR.setOpaque(true);
+        Resultados.add(DeltayR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 490, -1));
+
+        Panel.add(Resultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 580, 420));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo.png"))); // NOI18N
+        Panel.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 1570, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CalcularBActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void x1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1TActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_x1TActionPerformed
+
+    private void Y1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Y1TActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Y1TActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +317,39 @@ public class Distancias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Calcular;
+    private javax.swing.JButton CalcularB;
+    private javax.swing.JLabel CoorT1;
+    private javax.swing.JLabel CoorT2;
+    private javax.swing.JLabel Coordenada1L;
+    private javax.swing.JLabel Coordenada1R;
+    private javax.swing.JLabel Coordenada2L;
+    private javax.swing.JLabel Coordenada2R;
+    private javax.swing.JLabel DeltaxL;
+    private javax.swing.JLabel DeltaxR;
+    private javax.swing.JLabel DeltayL;
+    private javax.swing.JLabel DeltayR;
+    private javax.swing.JLabel DistanciaL;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel Instrucción;
+    private javax.swing.JButton Limpiar;
+    private javax.swing.JLabel Línea;
+    private javax.swing.JLabel LíneaCalcular;
+    private javax.swing.JLabel LíneaRe;
+    private javax.swing.JPanel Panel;
+    private javax.swing.JPanel Resultados;
+    private javax.swing.JLabel ResultadosL;
+    private javax.swing.JButton Salir;
+    private javax.swing.JLabel Título;
+    private javax.swing.JLabel Título2;
+    private javax.swing.JButton Volver;
+    private javax.swing.JLabel X1L;
+    private javax.swing.JLabel X2L;
+    private javax.swing.JTextField X2T;
+    private javax.swing.JLabel Y1L;
+    private javax.swing.JTextField Y1T;
+    private javax.swing.JLabel Y2L;
+    private javax.swing.JTextField Y2T;
+    private javax.swing.JTextField x1T;
     // End of variables declaration//GEN-END:variables
 }
