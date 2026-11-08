@@ -17,6 +17,7 @@ public class Impuestos extends javax.swing.JFrame {
      */
     public Impuestos() {
         initComponents();
+        Resultados.setVisible(false);
     }
 
     /**
@@ -144,6 +145,11 @@ public class Impuestos extends javax.swing.JFrame {
         PrecioT.setBackground(new java.awt.Color(0, 35, 15));
         PrecioT.setForeground(new java.awt.Color(120, 130, 120));
         PrecioT.setBorder(null);
+        PrecioT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrecioTKeyTyped(evt);
+            }
+        });
         Calcular.add(PrecioT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 570, 40));
 
         SiErb.setBackground(new java.awt.Color(0, 35, 15));
@@ -291,11 +297,15 @@ public class Impuestos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
-        // TODO add your handling code here:
+        impuesto();
+        Resultados.setVisible(true);
     }//GEN-LAST:event_CalcularBActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        // TODO add your handling code here:
+        PrecioT.setText("");
+        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
+        ProductoGrb.clearSelection();
+        Resultados.setVisible(false);
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -307,6 +317,34 @@ public class Impuestos extends javax.swing.JFrame {
         m.setVisible(true);//Hacer visible la otra ventana
         this.dispose();//Cerrar la ventana actual
     }//GEN-LAST:event_VolverActionPerformed
+
+    private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
+        char c = evt.getKeyChar();
+    String texto = PrecioT.getText();
+
+    // 1. Bloquear cualquier carácter que no sea un dígito o punto
+    if (!Character.isDigit(c) && c != '.') {
+        evt.consume();
+        return;
+    }
+
+    // 2. Bloquear si ya existe un punto y se intenta presionar otro
+    if (c == '.' && texto.contains(".")) {
+        evt.consume();
+        return;
+    }
+
+    // 3. Limitar a 2 decimales después del punto
+    if (texto.contains(".")) {
+        int puntoPos = texto.indexOf(".");
+        int cursor = PrecioT.getCaretPosition();
+        
+        // Si el usuario escribe después del punto y ya hay 2 dígitos
+        if (cursor > puntoPos && (texto.length() - puntoPos - 1) >= 2) {
+            evt.consume();
+        }
+    }
+    }//GEN-LAST:event_PrecioTKeyTyped
 
     /**
      * @param args the command line arguments
@@ -332,6 +370,46 @@ public class Impuestos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Impuestos().setVisible(true));
     }
+    
+    public void impuesto(){
+        double impuesto, precioinicial, preciofinal;
+        String tipoImpuesto, proposicion;
+        int porcentaje;
+        precioinicial = Double.parseDouble(PrecioT.getText());
+        if(SiErb.isSelected() && SiPrb.isSelected()){
+            impuesto = precioinicial * 0;
+            tipoImpuesto = "Excención total";
+            porcentaje = 0;
+            proposicion = "Es un estudiante acreditado y el producto está dentro del cátalogo educativo";
+        }
+        else if((NoErb.isSelected() && SiPrb.isSelected()) || (SiErb.isSelected() && NoCrb.isSelected())){
+            impuesto = precioinicial * 0.08;
+            tipoImpuesto = "Excención parcial";
+            porcentaje = 8;
+            if(NoErb.isSelected() && SiPrb.isSelected()){
+                proposicion = "No es un estudiante acreditado y el producto está dentro del cátalogo educativo";
+            }else{
+                proposicion = "Es un estudiante acreditado y el producto no está dentro del cátalogo educativo";
+            }
+        }
+        else{
+            impuesto = precioinicial * 0.16;
+            tipoImpuesto = "Sin excención";
+            porcentaje = 16;
+            proposicion = "No es un estudiante acreditado y el producto no está dentro del cátalogo educativo";
+        }
+        preciofinal = precioinicial + impuesto;
+        mostrar(impuesto, precioinicial, preciofinal, tipoImpuesto, proposicion, porcentaje);
+    }
+    public void mostrar(double impuesto, double precioinicial, double preciofinal, String tipoImpuesto, String proposicion, int porcentaje){
+        LeyR.setText(tipoImpuesto);
+        CondicionesR.setText(proposicion);
+        CostoiR.setText("$"+precioinicial);
+        PorcentajeiR.setText(porcentaje+"%");
+        ImpuestoR.setText("$"+impuesto);
+        TotalL.setText("Total: $"+preciofinal);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Calcular;
@@ -371,4 +449,6 @@ public class Impuestos extends javax.swing.JFrame {
     private javax.swing.JLabel Título2;
     private javax.swing.JButton Volver;
     // End of variables declaration//GEN-END:variables
+
 }
+
