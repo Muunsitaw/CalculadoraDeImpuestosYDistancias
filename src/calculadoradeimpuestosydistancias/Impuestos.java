@@ -93,6 +93,7 @@ public class Impuestos extends javax.swing.JFrame {
         Volver.setForeground(new java.awt.Color(0, 255, 106));
         Volver.setText("Volver al menú");
         Volver.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 5, true));
+        Volver.addActionListener(this::VolverActionPerformed);
         Panel.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 710, 190, 50));
 
         Salir.setBackground(new java.awt.Color(0, 15, 0));
@@ -100,6 +101,7 @@ public class Impuestos extends javax.swing.JFrame {
         Salir.setForeground(new java.awt.Color(0, 255, 106));
         Salir.setText("Salir");
         Salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 5, true));
+        Salir.addActionListener(this::SalirActionPerformed);
         Panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 710, 130, 50));
 
         Calcular.setBackground(new java.awt.Color(0, 15, 0));
@@ -295,6 +297,16 @@ public class Impuestos extends javax.swing.JFrame {
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        Menu m = new Menu();//Declarar la nueva ventana
+        m.setVisible(true);//Hacer visible la otra ventana
+        this.dispose();//Cerrar la ventana actual
+    }//GEN-LAST:event_VolverActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,14 +7,14 @@ package calculadoradeimpuestosydistancias;
  *
  * @author munsi_gm6lqlf
  */
-public class Menú extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menú.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
 
     /**
      * Creates new form Menú
      */
-    public Menú() {
+    public Menu() {
     initComponents();
 
 }
@@ -74,6 +74,7 @@ public class Menú extends javax.swing.JFrame {
         Salir.setForeground(new java.awt.Color(0, 255, 106));
         Salir.setText("Salir");
         Salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 106), 4, true));
+        Salir.addActionListener(this::SalirActionPerformed);
         panel.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 760, 130, 50));
 
         Impuestos.setBackground(new java.awt.Color(1, 40, 47));
@@ -82,6 +83,7 @@ public class Menú extends javax.swing.JFrame {
         Impuestos.setText("Cálculo de Impuestos");
         Impuestos.setActionCommand("Cálculo de impuestow");
         Impuestos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153)));
+        Impuestos.addActionListener(this::ImpuestosActionPerformed);
         panel.add(Impuestos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
 
         Distancias.setBackground(new java.awt.Color(1, 40, 47));
@@ -90,6 +92,7 @@ public class Menú extends javax.swing.JFrame {
         Distancias.setText("Cálculo de distancia");
         Distancias.setActionCommand("Cálculo de distancias");
         Distancias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153), new java.awt.Color(0, 255, 153)));
+        Distancias.addActionListener(this::DistanciasActionPerformed);
         panel.add(Distancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
 
         Título2.setFont(new java.awt.Font("Pristina", 0, 48)); // NOI18N
@@ -114,6 +117,22 @@ public class Menú extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void ImpuestosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImpuestosActionPerformed
+        Impuestos im = new Impuestos();//Declarar la nueva ventana
+        im.setVisible(true);//Hacer visible la otra ventana
+        this.dispose();//Cerrar la ventana actual
+    }//GEN-LAST:event_ImpuestosActionPerformed
+
+    private void DistanciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DistanciasActionPerformed
+        Distancias di = new Distancias();//Declarar la nueva ventana
+        di.setVisible(true);//Hacer visible la otra ventana
+        this.dispose();//Cerrar la ventana actual
+    }//GEN-LAST:event_DistanciasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,7 +155,7 @@ public class Menú extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Menú().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Menu().setVisible(true));
     }
     
 
