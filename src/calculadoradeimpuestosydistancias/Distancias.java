@@ -17,6 +17,7 @@ public class Distancias extends javax.swing.JFrame {
      */
     public Distancias() {
         initComponents();
+        Resultados.setVisible(false);
     }
 
     /**
@@ -155,7 +156,7 @@ public class Distancias extends javax.swing.JFrame {
 
         Y2L.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         Y2L.setForeground(new java.awt.Color(255, 255, 255));
-        Y2L.setText("Valor de x2:");
+        Y2L.setText("Valor de y2:");
         Calcular.add(Y2L, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
 
         Y1T.setBackground(new java.awt.Color(0, 35, 15));
@@ -278,11 +279,17 @@ public class Distancias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
-        // TODO add your handling code here:
+        calcular();
+        Resultados.setVisible(true);
     }//GEN-LAST:event_CalcularBActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        // TODO add your handling code here:
+        Coordenada1R.setText("");
+        Coordenada2R.setText("");
+        DeltaxR.setText("");
+        DeltayR.setText("");
+        DistanciaL.setText("");
+        Resultados.setVisible(false);
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void x1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1TActionPerformed
@@ -327,6 +334,23 @@ public class Distancias extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Distancias().setVisible(true));
     }
+    
+    public void calcular(){
+     double x1, x2, y1, y2, deltax, deltay, distancia; 
+     x1 = Double.parseDouble(x1T.getText());
+     y1 = Double.parseDouble(Y1T.getText());
+     x2 = Double.parseDouble(X2T.getText());
+     y2 = Double.parseDouble(Y2T.getText());
+     deltax = x2 - x1;
+     deltay = y2 - y1;
+     distancia = Math.sqrt(deltax * deltax + deltay * deltay);
+     Coordenada1R.setText(x1+","+y1);
+     Coordenada2R.setText(x2+","+y2);
+     DeltaxR.setText(""+deltax);
+     DeltayR.setText(""+deltay);
+     DistanciaL.setText("Distancia: "+distancia);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Calcular;

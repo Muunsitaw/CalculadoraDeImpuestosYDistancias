@@ -319,31 +319,7 @@ public class Impuestos extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
-        char c = evt.getKeyChar();
-    String texto = PrecioT.getText();
 
-    // 1. Bloquear cualquier carácter que no sea un dígito o punto
-    if (!Character.isDigit(c) && c != '.') {
-        evt.consume();
-        return;
-    }
-
-    // 2. Bloquear si ya existe un punto y se intenta presionar otro
-    if (c == '.' && texto.contains(".")) {
-        evt.consume();
-        return;
-    }
-
-    // 3. Limitar a 2 decimales después del punto
-    if (texto.contains(".")) {
-        int puntoPos = texto.indexOf(".");
-        int cursor = PrecioT.getCaretPosition();
-        
-        // Si el usuario escribe después del punto y ya hay 2 dígitos
-        if (cursor > puntoPos && (texto.length() - puntoPos - 1) >= 2) {
-            evt.consume();
-        }
-    }
     }//GEN-LAST:event_PrecioTKeyTyped
 
     /**
