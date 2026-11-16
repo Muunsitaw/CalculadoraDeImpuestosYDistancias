@@ -4,6 +4,10 @@
  */
 package calculadoradeimpuestosydistancias;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 /**
  *
  * @author munsi_gm6lqlf
@@ -69,7 +73,6 @@ public class Impuestos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Impuestos");
         setName("Impuestos"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1564, 1006));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel.setPreferredSize(new java.awt.Dimension(1564, 1006));
@@ -145,6 +148,7 @@ public class Impuestos extends javax.swing.JFrame {
         PrecioT.setBackground(new java.awt.Color(0, 35, 15));
         PrecioT.setForeground(new java.awt.Color(120, 130, 120));
         PrecioT.setBorder(null);
+        PrecioT.addActionListener(this::PrecioTActionPerformed);
         PrecioT.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 PrecioTKeyTyped(evt);
@@ -296,18 +300,6 @@ public class Impuestos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
-        impuesto();
-        Resultados.setVisible(true);
-    }//GEN-LAST:event_CalcularBActionPerformed
-
-    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        PrecioT.setText("");
-        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
-        ProductoGrb.clearSelection();
-        Resultados.setVisible(false);
-    }//GEN-LAST:event_LimpiarActionPerformed
-
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
@@ -318,9 +310,52 @@ public class Impuestos extends javax.swing.JFrame {
         this.dispose();//Cerrar la ventana actual
     }//GEN-LAST:event_VolverActionPerformed
 
-    private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        PrecioT.setText("");
+        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
+        ProductoGrb.clearSelection();
+        Resultados.setVisible(false);
+    }//GEN-LAST:event_LimpiarActionPerformed
 
+    private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
+        /*private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {*/
+            char c = evt.getKeyChar();
+            String texto = PrecioT.getText();
+
+            // Solo números y un punto
+            if (!Character.isDigit(c) && c != '.') {
+                evt.consume();
+            }
+
+            // No permitir que empiece con 0
+            if (texto.isEmpty() && c == '0') {
+                evt.consume();
+            }
+
+            // Solo un punto
+            if (c == '.' && texto.contains(".")) {
+                evt.consume();
+            }
+
+            // Máximo 2 decimales
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+
+                if (texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            }
     }//GEN-LAST:event_PrecioTKeyTyped
+
+    private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
+        validar();
+        /*impuesto();
+        Resultados.setVisible(true);*/
+    }//GEN-LAST:event_CalcularBActionPerformed
+
+    private void PrecioTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,6 +420,25 @@ public class Impuestos extends javax.swing.JFrame {
         ImpuestoR.setText("$"+impuesto);
         TotalL.setText("Total: $"+preciofinal);
     }
+    
+    public void validar(){
+            if((PrecioT.getText().trim().isEmpty()) || (EstudianteGrb.getSelection() == null) || (ProductoGrb.getSelection() == null)){
+                UIManager.put("OptionPane.background",new Color(0,153,0));
+                JOptionPane.showMessageDialog(null, "Complete toda la información para continuar", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(Double.parseDouble(PrecioT.getText())<100){
+                UIManager.put("OptionPane.background",new Color(0,153,0));
+                JOptionPane.showMessageDialog(null, "Ingrese un producto con un precio mayor a $100", "Error", JOptionPane.ERROR_MESSAGE);
+                PrecioT.setText("");
+            }
+            else{
+                impuesto();
+                Resultados.setVisible(true);
+            }
+        
+    }
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

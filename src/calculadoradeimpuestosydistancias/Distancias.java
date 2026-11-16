@@ -144,6 +144,11 @@ public class Distancias extends javax.swing.JFrame {
         x1T.setForeground(new java.awt.Color(120, 130, 120));
         x1T.setBorder(null);
         x1T.addActionListener(this::x1TActionPerformed);
+        x1T.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                x1TKeyTyped(evt);
+            }
+        });
         Calcular.add(x1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 260, 40));
 
         Limpiar.setBackground(new java.awt.Color(0, 15, 0));
@@ -164,18 +169,33 @@ public class Distancias extends javax.swing.JFrame {
         Y1T.setForeground(new java.awt.Color(120, 130, 120));
         Y1T.setBorder(null);
         Y1T.addActionListener(this::Y1TActionPerformed);
+        Y1T.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Y1TKeyTyped(evt);
+            }
+        });
         Calcular.add(Y1T, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 250, 40));
 
         X2T.setBackground(new java.awt.Color(0, 35, 15));
         X2T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         X2T.setForeground(new java.awt.Color(120, 130, 120));
         X2T.setBorder(null);
+        X2T.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                X2TKeyTyped(evt);
+            }
+        });
         Calcular.add(X2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 260, 40));
 
         Y2T.setBackground(new java.awt.Color(0, 35, 15));
         Y2T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         Y2T.setForeground(new java.awt.Color(120, 130, 120));
         Y2T.setBorder(null);
+        Y2T.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Y2TKeyTyped(evt);
+            }
+        });
         Calcular.add(Y2T, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 250, 40));
 
         CoorT1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
@@ -309,6 +329,34 @@ public class Distancias extends javax.swing.JFrame {
         m.setVisible(true);//Hacer visible la otra ventana
         this.dispose();//Cerrar la ventana actual
     }//GEN-LAST:event_VolverActionPerformed
+
+    private void x1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_x1TKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_x1TKeyTyped
+
+    private void Y1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y1TKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Y1TKeyTyped
+
+    private void X2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_X2TKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_X2TKeyTyped
+
+    private void Y2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y2TKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_Y2TKeyTyped
 
     /**
      * @param args the command line arguments
