@@ -146,6 +146,7 @@ public class Impuestos extends javax.swing.JFrame {
         Calcular.add(CalcularB, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 120, 40));
 
         PrecioT.setBackground(new java.awt.Color(0, 35, 15));
+        PrecioT.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PrecioT.setForeground(new java.awt.Color(120, 130, 120));
         PrecioT.setBorder(null);
         PrecioT.addActionListener(this::PrecioTActionPerformed);
@@ -228,11 +229,11 @@ public class Impuestos extends javax.swing.JFrame {
         Resultados.add(LeyL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, -1));
 
         CondicionesR.setBackground(new java.awt.Color(0, 35, 15));
-        CondicionesR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        CondicionesR.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         CondicionesR.setForeground(new java.awt.Color(120, 130, 120));
         CondicionesR.setText("\"\"");
         CondicionesR.setOpaque(true);
-        Resultados.add(CondicionesR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 390, -1));
+        Resultados.add(CondicionesR, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 540, 40));
 
         CondicionesL.setBackground(new java.awt.Color(0, 35, 15));
         CondicionesL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -246,7 +247,7 @@ public class Impuestos extends javax.swing.JFrame {
         CostoiL.setForeground(new java.awt.Color(255, 255, 255));
         CostoiL.setText("Costo inicial:");
         CostoiL.setOpaque(true);
-        Resultados.add(CostoiL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, -1));
+        Resultados.add(CostoiL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, -1));
 
         TotalL.setBackground(new java.awt.Color(0, 60, 25));
         TotalL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -260,35 +261,35 @@ public class Impuestos extends javax.swing.JFrame {
         ImpuestoL.setForeground(new java.awt.Color(255, 255, 255));
         ImpuestoL.setText("Impuesto aplicado:");
         ImpuestoL.setOpaque(true);
-        Resultados.add(ImpuestoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 230, -1));
+        Resultados.add(ImpuestoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 230, -1));
 
         PorcentajeIL.setBackground(new java.awt.Color(0, 35, 15));
         PorcentajeIL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         PorcentajeIL.setForeground(new java.awt.Color(255, 255, 255));
         PorcentajeIL.setText("Porcentaje de impuesto:");
         PorcentajeIL.setOpaque(true);
-        Resultados.add(PorcentajeIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 280, -1));
+        Resultados.add(PorcentajeIL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 280, -1));
 
         CostoiR.setBackground(new java.awt.Color(0, 35, 15));
         CostoiR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         CostoiR.setForeground(new java.awt.Color(120, 130, 120));
         CostoiR.setText("\"\"");
         CostoiR.setOpaque(true);
-        Resultados.add(CostoiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 390, -1));
+        Resultados.add(CostoiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 390, -1));
 
         PorcentajeiR.setBackground(new java.awt.Color(0, 35, 15));
         PorcentajeiR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         PorcentajeiR.setForeground(new java.awt.Color(120, 130, 120));
         PorcentajeiR.setText("\"\"");
         PorcentajeiR.setOpaque(true);
-        Resultados.add(PorcentajeiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 260, -1));
+        Resultados.add(PorcentajeiR, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 260, -1));
 
         ImpuestoR.setBackground(new java.awt.Color(0, 35, 15));
         ImpuestoR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         ImpuestoR.setForeground(new java.awt.Color(120, 130, 120));
         ImpuestoR.setText("\"\"");
         ImpuestoR.setOpaque(true);
-        Resultados.add(ImpuestoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 310, -1));
+        Resultados.add(ImpuestoR, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 310, -1));
 
         Panel.add(Resultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 580, 420));
 
@@ -429,6 +430,11 @@ public class Impuestos extends javax.swing.JFrame {
             else if(Double.parseDouble(PrecioT.getText())<100){
                 UIManager.put("OptionPane.background",new Color(0,153,0));
                 JOptionPane.showMessageDialog(null, "Ingrese un producto con un precio mayor a $100", "Error", JOptionPane.ERROR_MESSAGE);
+                PrecioT.setText("");
+            }
+            else if(Double.parseDouble(PrecioT.getText())>999_999_999_999.99){
+                UIManager.put("OptionPane.background",new Color(0,153,0));
+                JOptionPane.showMessageDialog(null, "El monto debe ser menor que $999,999,999,999.99", "Error", JOptionPane.ERROR_MESSAGE);
                 PrecioT.setText("");
             }
             else{
