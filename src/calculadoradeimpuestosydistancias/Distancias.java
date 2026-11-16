@@ -17,6 +17,10 @@ public class Distancias extends javax.swing.JFrame {
      */
     public Distancias() {
         initComponents();
+        x1T.setTransferHandler(null);
+        X2T.setTransferHandler(null);
+        Y1T.setTransferHandler(null);
+        Y2T.setTransferHandler(null);
         Resultados.setVisible(false);
     }
 
@@ -143,7 +147,6 @@ public class Distancias extends javax.swing.JFrame {
         x1T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         x1T.setForeground(new java.awt.Color(120, 130, 120));
         x1T.setBorder(null);
-        x1T.addActionListener(this::x1TActionPerformed);
         x1T.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 x1TKeyTyped(evt);
@@ -168,7 +171,6 @@ public class Distancias extends javax.swing.JFrame {
         Y1T.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         Y1T.setForeground(new java.awt.Color(120, 130, 120));
         Y1T.setBorder(null);
-        Y1T.addActionListener(this::Y1TActionPerformed);
         Y1T.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Y1TKeyTyped(evt);
@@ -228,7 +230,7 @@ public class Distancias extends javax.swing.JFrame {
         Coordenada1R.setBackground(new java.awt.Color(0, 35, 15));
         Coordenada1R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         Coordenada1R.setForeground(new java.awt.Color(120, 130, 120));
-        Coordenada1R.setText("jLabel1");
+        Coordenada1R.setText("\"\"");
         Coordenada1R.setOpaque(true);
         Resultados.add(Coordenada1R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 370, -1));
 
@@ -242,7 +244,7 @@ public class Distancias extends javax.swing.JFrame {
         Coordenada2R.setBackground(new java.awt.Color(0, 35, 15));
         Coordenada2R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         Coordenada2R.setForeground(new java.awt.Color(120, 130, 120));
-        Coordenada2R.setText("hujik");
+        Coordenada2R.setText("\"\"");
         Coordenada2R.setOpaque(true);
         Resultados.add(Coordenada2R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 370, -1));
 
@@ -277,14 +279,14 @@ public class Distancias extends javax.swing.JFrame {
         DeltaxR.setBackground(new java.awt.Color(0, 35, 15));
         DeltaxR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         DeltaxR.setForeground(new java.awt.Color(120, 130, 120));
-        DeltaxR.setText("jLabel1");
+        DeltaxR.setText("\"\"");
         DeltaxR.setOpaque(true);
         Resultados.add(DeltaxR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 490, -1));
 
         DeltayR.setBackground(new java.awt.Color(0, 35, 15));
         DeltayR.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
         DeltayR.setForeground(new java.awt.Color(120, 130, 120));
-        DeltayR.setText("jLabel2");
+        DeltayR.setText("\"\"");
         DeltayR.setOpaque(true);
         Resultados.add(DeltayR, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 490, -1));
 
@@ -304,21 +306,8 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_CalcularBActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        Coordenada1R.setText("");
-        Coordenada2R.setText("");
-        DeltaxR.setText("");
-        DeltayR.setText("");
-        DistanciaL.setText("");
-        Resultados.setVisible(false);
+        limpiar();
     }//GEN-LAST:event_LimpiarActionPerformed
-
-    private void x1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_x1TActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_x1TActionPerformed
-
-    private void Y1TActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Y1TActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Y1TActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         System.exit(0);
@@ -331,31 +320,115 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void x1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_x1TKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
+            char c = evt.getKeyChar();
+            String texto = x1T.getText();
+            int cursor = x1T.getCaretPosition();
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {
+                evt.consume();
+                return;
+            }
+            if(c == '-'){
+                if(cursor != 0 || texto.contains("-")){
+                    evt.consume();
+                }
+                return;
+            }
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
+            }
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            }  
     }//GEN-LAST:event_x1TKeyTyped
 
     private void Y1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y1TKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
+            char c = evt.getKeyChar();
+            String texto = Y1T.getText();
+            int cursor = Y1T.getCaretPosition();
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {
+                evt.consume();
+                return;
+            }
+            if(c == '-'){
+                if(cursor != 0 || texto.contains("-")){
+                    evt.consume();
+                }
+                return;
+            }
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
+            }
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            } 
     }//GEN-LAST:event_Y1TKeyTyped
 
     private void X2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_X2TKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
+           char c = evt.getKeyChar();
+            String texto = X2T.getText();
+            int cursor = X2T.getCaretPosition();
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {
+                evt.consume();
+                return;
+            }
+            if(c == '-'){
+                if(cursor != 0 || texto.contains("-")){
+                    evt.consume();
+                }
+                return;
+            }
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
+            }
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            } 
     }//GEN-LAST:event_X2TKeyTyped
 
     private void Y2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y2TKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c)) {
-            evt.consume();
-        }
+            String texto = Y2T.getText();
+            int cursor = Y2T.getCaretPosition();
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {
+                evt.consume();
+                return;
+            }
+            if(c == '-'){
+                if(cursor != 0 || texto.contains("-")){
+                    evt.consume();
+                }
+                return;
+            }
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
+            }
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            } 
     }//GEN-LAST:event_Y2TKeyTyped
 
     /**
@@ -398,6 +471,23 @@ public class Distancias extends javax.swing.JFrame {
      DeltayR.setText(""+deltay);
      DistanciaL.setText("Distancia: "+distancia);
     }
+    
+    public void limpiar(){
+        x1T.setText("");
+        X2T.setText("");
+        Y1T.setText("");
+        Y2T.setText("");
+        Coordenada1R.setText("");
+        Coordenada2R.setText("");
+        DeltaxR.setText("");
+        DeltayR.setText("");
+        DistanciaL.setText("");
+        Resultados.setVisible(false);
+    }
+    
+     
+    
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
