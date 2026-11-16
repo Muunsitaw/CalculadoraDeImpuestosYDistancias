@@ -251,9 +251,9 @@ public class Impuestos extends javax.swing.JFrame {
         Resultados.add(CostoiL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 150, -1));
 
         TotalL.setBackground(new java.awt.Color(0, 60, 25));
-        TotalL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        TotalL.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         TotalL.setForeground(new java.awt.Color(0, 255, 120));
-        TotalL.setText("Total:");
+        TotalL.setText("Total: ");
         TotalL.setOpaque(true);
         Resultados.add(TotalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 540, 40));
 
@@ -295,6 +295,7 @@ public class Impuestos extends javax.swing.JFrame {
         Panel.add(Resultados, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 580, 420));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo.png"))); // NOI18N
+        Fondo.setText("\"\"");
         Panel.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 1570, -1));

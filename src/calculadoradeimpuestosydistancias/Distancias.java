@@ -7,6 +7,7 @@ package calculadoradeimpuestosydistancias;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.JTextField;
 
 /**
  *
@@ -232,11 +233,11 @@ public class Distancias extends javax.swing.JFrame {
         Resultados.add(LíneaRe, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 40, -1, -1));
 
         Coordenada1R.setBackground(new java.awt.Color(0, 35, 15));
-        Coordenada1R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        Coordenada1R.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         Coordenada1R.setForeground(new java.awt.Color(120, 130, 120));
         Coordenada1R.setText("\"\"");
         Coordenada1R.setOpaque(true);
-        Resultados.add(Coordenada1R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 370, -1));
+        Resultados.add(Coordenada1R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 370, 30));
 
         Coordenada1L.setBackground(new java.awt.Color(0, 35, 15));
         Coordenada1L.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -246,11 +247,11 @@ public class Distancias extends javax.swing.JFrame {
         Resultados.add(Coordenada1L, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, -1));
 
         Coordenada2R.setBackground(new java.awt.Color(0, 35, 15));
-        Coordenada2R.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        Coordenada2R.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         Coordenada2R.setForeground(new java.awt.Color(120, 130, 120));
         Coordenada2R.setText("\"\"");
         Coordenada2R.setOpaque(true);
-        Resultados.add(Coordenada2R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 370, -1));
+        Resultados.add(Coordenada2R, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 370, 30));
 
         Coordenada2L.setBackground(new java.awt.Color(0, 35, 15));
         Coordenada2L.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -267,9 +268,9 @@ public class Distancias extends javax.swing.JFrame {
         Resultados.add(DeltaxL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 50, -1));
 
         DistanciaL.setBackground(new java.awt.Color(0, 60, 25));
-        DistanciaL.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        DistanciaL.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         DistanciaL.setForeground(new java.awt.Color(0, 255, 120));
-        DistanciaL.setText("Distancia:");
+        DistanciaL.setText("Distancia: ");
         DistanciaL.setOpaque(true);
         Resultados.add(DistanciaL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 540, 40));
 
@@ -323,115 +324,19 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void x1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_x1TKeyTyped
-            char c = evt.getKeyChar();
-            String texto = x1T.getText();
-            int cursor = x1T.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.' && c!= '-') {
-                evt.consume();
-                return;
-            }
-            if(c == '-'){
-                if(cursor != 0 || texto.contains("-")){
-                    evt.consume();
-                }
-                return;
-            }
-            if (c == '.') {
-                if (texto.contains(".") || (texto.length() - cursor) > 2) {
-                    evt.consume();
-                    return;
-                }
-            }
-            if (texto.contains(".")) {
-                int posicionPunto = texto.indexOf('.');
-                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
-                    evt.consume();
-                }
-            }  
+            keyevent(evt, x1T); 
     }//GEN-LAST:event_x1TKeyTyped
 
     private void Y1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y1TKeyTyped
-            char c = evt.getKeyChar();
-            String texto = Y1T.getText();
-            int cursor = Y1T.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.' && c!= '-') {
-                evt.consume();
-                return;
-            }
-            if(c == '-'){
-                if(cursor != 0 || texto.contains("-")){
-                    evt.consume();
-                }
-                return;
-            }
-            if (c == '.') {
-                if (texto.contains(".") || (texto.length() - cursor) > 2) {
-                    evt.consume();
-                    return;
-                }
-            }
-            if (texto.contains(".")) {
-                int posicionPunto = texto.indexOf('.');
-                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
-                    evt.consume();
-                }
-            } 
+            keyevent(evt, Y1T);
     }//GEN-LAST:event_Y1TKeyTyped
 
     private void X2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_X2TKeyTyped
-           char c = evt.getKeyChar();
-            String texto = X2T.getText();
-            int cursor = X2T.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.' && c!= '-') {
-                evt.consume();
-                return;
-            }
-            if(c == '-'){
-                if(cursor != 0 || texto.contains("-")){
-                    evt.consume();
-                }
-                return;
-            }
-            if (c == '.') {
-                if (texto.contains(".") || (texto.length() - cursor) > 2) {
-                    evt.consume();
-                    return;
-                }
-            }
-            if (texto.contains(".")) {
-                int posicionPunto = texto.indexOf('.');
-                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
-                    evt.consume();
-                }
-            } 
+        keyevent(evt, X2T);
     }//GEN-LAST:event_X2TKeyTyped
 
     private void Y2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y2TKeyTyped
-        char c = evt.getKeyChar();
-            String texto = Y2T.getText();
-            int cursor = Y2T.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.' && c!= '-') {
-                evt.consume();
-                return;
-            }
-            if(c == '-'){
-                if(cursor != 0 || texto.contains("-")){
-                    evt.consume();
-                }
-                return;
-            }
-            if (c == '.') {
-                if (texto.contains(".") || (texto.length() - cursor) > 2) {
-                    evt.consume();
-                    return;
-                }
-            }
-            if (texto.contains(".")) {
-                int posicionPunto = texto.indexOf('.');
-                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
-                    evt.consume();
-                }
-            } 
+        keyevent(evt, Y2T);
     }//GEN-LAST:event_Y2TKeyTyped
 
     /**
@@ -520,7 +425,34 @@ public class Distancias extends javax.swing.JFrame {
         UIManager.put("OptionPane.background",new Color(0,153,0));
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
-     
+    
+    public void keyevent(java.awt.event.KeyEvent evt, JTextField campo){
+        char c = evt.getKeyChar();
+            String texto = campo.getText();
+            int cursor = campo.getCaretPosition();
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {
+                evt.consume();
+                return;
+            }
+            if(c == '-'){
+                if(cursor != 0 || texto.contains("-")){
+                    evt.consume();
+                }
+                return;
+            }
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
+            }
+            if (texto.contains(".")) {
+                int posicionPunto = texto.indexOf('.');
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
+                    evt.consume();
+                }
+            } 
+    }
     
     
     
