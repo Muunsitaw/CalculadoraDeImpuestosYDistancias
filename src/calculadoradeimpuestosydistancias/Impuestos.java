@@ -21,6 +21,7 @@ public class Impuestos extends javax.swing.JFrame {
      */
     public Impuestos() {
         initComponents();
+        PrecioT.setTransferHandler(null);
         Resultados.setVisible(false);
     }
 
@@ -312,40 +313,42 @@ public class Impuestos extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        PrecioT.setText("");
-        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
-        ProductoGrb.clearSelection();
-        Resultados.setVisible(false);
+        limpiar();
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
-        /*private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {*/
             char c = evt.getKeyChar();
             String texto = PrecioT.getText();
+            int cursor = PrecioT.getCaretPosition();
 
-            // Solo números y un punto
+            // 1. Solo números y punto (esto ya bloquea el signo '-' de negativos)
             if (!Character.isDigit(c) && c != '.') {
                 evt.consume();
+                return;
             }
 
-            // No permitir que empiece con 0
-            if (texto.isEmpty() && c == '0') {
+            // 2. No permitir empezar con '0' ni con '.' (bloquea el 0 y menores a 1 como 0.50 o .50)
+            if ((texto.isEmpty() || cursor == 0) && (c == '0' || c == '.')) {
                 evt.consume();
+                return;
             }
 
-            // Solo un punto
-            if (c == '.' && texto.contains(".")) {
-                evt.consume();
+            // 3. Solo un punto y que no deje más de 2 decimales a la derecha al ponerlo en medio
+            if (c == '.') {
+                if (texto.contains(".") || (texto.length() - cursor) > 2) {
+                    evt.consume();
+                    return;
+                }
             }
 
-            // Máximo 2 decimales
+            // 4. Máximo 2 decimales solo si el cursor está DESPUÉS del punto
             if (texto.contains(".")) {
                 int posicionPunto = texto.indexOf('.');
-
-                if (texto.substring(posicionPunto + 1).length() >= 2) {
+                if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
                     evt.consume();
                 }
             }
+
     }//GEN-LAST:event_PrecioTKeyTyped
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
@@ -411,9 +414,7 @@ public class Impuestos extends javax.swing.JFrame {
             proposicion = "No es un estudiante acreditado y el producto no está dentro del cátalogo educativo";
         }
         preciofinal = precioinicial + impuesto;
-        mostrar(impuesto, precioinicial, preciofinal, tipoImpuesto, proposicion, porcentaje);
-    }
-    public void mostrar(double impuesto, double precioinicial, double preciofinal, String tipoImpuesto, String proposicion, int porcentaje){
+        
         LeyR.setText(tipoImpuesto);
         CondicionesR.setText(proposicion);
         CostoiR.setText("$"+precioinicial);
@@ -423,25 +424,37 @@ public class Impuestos extends javax.swing.JFrame {
     }
     
     public void validar(){
+            String mensaje;
             if((PrecioT.getText().trim().isEmpty()) || (EstudianteGrb.getSelection() == null) || (ProductoGrb.getSelection() == null)){
-                UIManager.put("OptionPane.background",new Color(0,153,0));
-                JOptionPane.showMessageDialog(null, "Complete toda la información para continuar", "Error", JOptionPane.ERROR_MESSAGE);
+                mensaje = "Complete toda la información para continuar";
+                cuadrodedialogo(mensaje);
+                limpiar();
             }
             else if(Double.parseDouble(PrecioT.getText())<100){
-                UIManager.put("OptionPane.background",new Color(0,153,0));
-                JOptionPane.showMessageDialog(null, "Ingrese un producto con un precio mayor a $100", "Error", JOptionPane.ERROR_MESSAGE);
-                PrecioT.setText("");
+                mensaje = "Ingrese un precio mayor a $100";
+                cuadrodedialogo(mensaje);
+                limpiar();
             }
             else if(Double.parseDouble(PrecioT.getText())>999_999_999_999.99){
-                UIManager.put("OptionPane.background",new Color(0,153,0));
-                JOptionPane.showMessageDialog(null, "El monto debe ser menor que $999,999,999,999.99", "Error", JOptionPane.ERROR_MESSAGE);
-                PrecioT.setText("");
+                mensaje = "El precio debe ser menor que $999,999,999,999.99";
+                cuadrodedialogo(mensaje);
+                limpiar();
             }
             else{
                 impuesto();
                 Resultados.setVisible(true);
             }
-        
+    }
+            
+    public void cuadrodedialogo(String mensaje){
+              UIManager.put("OptionPane.background",new Color(0,153,0));
+              JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+    public void limpiar(){
+        PrecioT.setText("");
+        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
+        ProductoGrb.clearSelection();
+        Resultados.setVisible(false);
     }
     
     
