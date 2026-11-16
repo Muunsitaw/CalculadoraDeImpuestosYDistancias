@@ -4,6 +4,10 @@
  */
 package calculadoradeimpuestosydistancias;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+
 /**
  *
  * @author munsi_gm6lqlf
@@ -301,8 +305,7 @@ public class Distancias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
-        calcular();
-        Resultados.setVisible(true);
+        validar();
     }//GEN-LAST:event_CalcularBActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
@@ -465,11 +468,11 @@ public class Distancias extends javax.swing.JFrame {
      deltax = x2 - x1;
      deltay = y2 - y1;
      distancia = Math.sqrt(deltax * deltax + deltay * deltay);
-     Coordenada1R.setText(x1+","+y1);
-     Coordenada2R.setText(x2+","+y2);
-     DeltaxR.setText(""+deltax);
-     DeltayR.setText(""+deltay);
-     DistanciaL.setText("Distancia: "+distancia);
+     Coordenada1R.setText(String.format("%,.2f , %,.2f",x1,y1));
+     Coordenada2R.setText(String.format("%,.2f , %,.2f",x2,y2));
+     DeltaxR.setText(String.format("%,.2f",deltax));
+     DeltayR.setText(String.format("%,.2f",deltay));
+     DistanciaL.setText(String.format("Distancia: %,.2f u",distancia));
     }
     
     public void limpiar(){
@@ -484,7 +487,39 @@ public class Distancias extends javax.swing.JFrame {
         DistanciaL.setText("");
         Resultados.setVisible(false);
     }
+    public void validar(){
+        String mensaje;
+        double min = -999999999.99, max = 999999999.99;
+        if((x1T.getText().trim().isEmpty()) || (X2T.getText().trim().isEmpty()) || (Y1T.getText().trim().isEmpty()) || (Y2T.getText().trim().isEmpty())){
+        mensaje = "Complete toda la información para continuar";
+        limpiar();
+        cuadrodedialogo(mensaje);
+        }
+        else if(Y1T.getText().equals(Y2T.getText())){
+            mensaje = "No sé puede realizar el cálculo con una coordenada sobre el otro";
+            limpiar();
+            cuadrodedialogo(mensaje);
+        }
+        else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){
+            mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";
+            limpiar();
+            cuadrodedialogo(mensaje);
+        }
+        else if((Double.parseDouble(x1T.getText())<min || Double.parseDouble(x1T.getText())>max) || (Double.parseDouble(X2T.getText())<min || Double.parseDouble(X2T.getText())>max) || (Double.parseDouble(Y1T.getText())<min || Double.parseDouble(Y1T.getText())>max) || (Double.parseDouble(Y2T.getText())<min || Double.parseDouble(Y2T.getText())>max)){
+            mensaje = String.format("Los puntos no pueden ser menores a  %,.2f ni mayores a %,.2f", min  , max);
+            limpiar();
+            cuadrodedialogo(mensaje);
+        }
+        else{
+            calcular();
+            Resultados.setVisible(true);
+        }
+    }
     
+    public void cuadrodedialogo(String mensaje){
+        UIManager.put("OptionPane.background",new Color(0,153,0));
+        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
      
     
     

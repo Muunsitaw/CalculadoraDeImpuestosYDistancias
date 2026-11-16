@@ -426,8 +426,8 @@ public class Impuestos extends javax.swing.JFrame {
                 cuadrodedialogo(mensaje);
                 limpiar();
             }
-            else if(Double.parseDouble(PrecioT.getText())>999_999_999_999.99){
-                mensaje = "El precio debe ser menor que $999,999,999,999.99";
+            else if(Double.parseDouble(PrecioT.getText())>999999999999999.99){
+                mensaje = "El precio debe ser menor que $999,999,999,999,999.99";
                 cuadrodedialogo(mensaje);
                 limpiar();
             }
