@@ -320,35 +320,26 @@ public class Impuestos extends javax.swing.JFrame {
             char c = evt.getKeyChar();
             String texto = PrecioT.getText();
             int cursor = PrecioT.getCaretPosition();
-
-            // 1. Solo números y punto (esto ya bloquea el signo '-' de negativos)
             if (!Character.isDigit(c) && c != '.') {
                 evt.consume();
                 return;
             }
-
-            // 2. No permitir empezar con '0' ni con '.' (bloquea el 0 y menores a 1 como 0.50 o .50)
             if ((texto.isEmpty() || cursor == 0) && (c == '0' || c == '.')) {
                 evt.consume();
                 return;
             }
-
-            // 3. Solo un punto y que no deje más de 2 decimales a la derecha al ponerlo en medio
             if (c == '.') {
                 if (texto.contains(".") || (texto.length() - cursor) > 2) {
                     evt.consume();
                     return;
                 }
             }
-
-            // 4. Máximo 2 decimales solo si el cursor está DESPUÉS del punto
             if (texto.contains(".")) {
                 int posicionPunto = texto.indexOf('.');
                 if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
                     evt.consume();
                 }
             }
-
     }//GEN-LAST:event_PrecioTKeyTyped
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
@@ -417,10 +408,10 @@ public class Impuestos extends javax.swing.JFrame {
         
         LeyR.setText(tipoImpuesto);
         CondicionesR.setText(proposicion);
-        CostoiR.setText("$"+precioinicial);
+        CostoiR.setText(String.format("$%,.2f",precioinicial));
         PorcentajeiR.setText(porcentaje+"%");
-        ImpuestoR.setText("$"+impuesto);
-        TotalL.setText("Total: $"+preciofinal);
+        ImpuestoR.setText(String.format("$%,.2f",impuesto));
+        TotalL.setText(String.format("Total: $%,.2f",preciofinal));
     }
     
     public void validar(){
