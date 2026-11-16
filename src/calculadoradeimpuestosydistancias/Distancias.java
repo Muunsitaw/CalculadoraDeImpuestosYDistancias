@@ -1,32 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+/*Propósito:
+Calcular la distancia entre dos puntos en un plano cartesiano utilizando la fórmula de la distancia euclidiana.
+Entradas:
+- Coordenada x1.
+- Coordenada y1.
+- Coordenada x2.
+- Coordenada y2.
+Salidas:
+- Coordenada 1.
+- Coordenada 2.
+- Incremento en X (ΔX).
+- Incremento en Y (ΔY).
+- Distancia entre los dos puntos.*/
 package calculadoradeimpuestosydistancias;
 
-import java.awt.Color;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.JTextField;
+import java.awt.Color; //Librería para trabajar con colores 
+import javax.swing.JOptionPane; //Librería para mostrar cuadros de diálogo
+import javax.swing.UIManager; //Librería para trabajar con los componentes de swing
+import javax.swing.JTextField; //Librería para usar objetos de tipo campo de texto
 
-/**
- *
- * @author munsi_gm6lqlf
- */
 public class Distancias extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Distancias.class.getName());
 
-    /**
-     * Creates new form Impuestos
-     */
     public Distancias() {
-        initComponents();
-        x1T.setTransferHandler(null);
+        initComponents();//Inicializa los componentes
+        x1T.setTransferHandler(null);//Evita que se pueda copiar y pegar texto en este campo
         X2T.setTransferHandler(null);
         Y1T.setTransferHandler(null);
         Y2T.setTransferHandler(null);
-        Resultados.setVisible(false);
+        Resultados.setVisible(false);//Oculta el panel que muestra los resultados al inicio del programa
     }
 
     /**
@@ -314,7 +316,7 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
+        System.exit(0); //Sale de la ventana actual
     }//GEN-LAST:event_SalirActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
@@ -324,7 +326,7 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void x1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_x1TKeyTyped
-            keyevent(evt, x1T); 
+            keyevent(evt, x1T); //Llama a la función para válidar lo que escribe el usuario
     }//GEN-LAST:event_x1TKeyTyped
 
     private void Y1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y1TKeyTyped
@@ -332,11 +334,11 @@ public class Distancias extends javax.swing.JFrame {
     }//GEN-LAST:event_Y1TKeyTyped
 
     private void X2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_X2TKeyTyped
-        keyevent(evt, X2T);
+            keyevent(evt, X2T);
     }//GEN-LAST:event_X2TKeyTyped
 
     private void Y2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Y2TKeyTyped
-        keyevent(evt, Y2T);
+            keyevent(evt, Y2T);
     }//GEN-LAST:event_Y2TKeyTyped
 
     /**
@@ -373,7 +375,7 @@ public class Distancias extends javax.swing.JFrame {
      deltax = x2 - x1;
      deltay = y2 - y1;
      distancia = Math.sqrt(deltax * deltax + deltay * deltay);
-     Coordenada1R.setText(String.format("%,.2f , %,.2f",x1,y1));
+     Coordenada1R.setText(String.format("%,.2f , %,.2f",x1,y1));//Solo muestra dos decimales, separa el número por comas y muestra los números grandes sin notación científica
      Coordenada2R.setText(String.format("%,.2f , %,.2f",x2,y2));
      DeltaxR.setText(String.format("%,.2f",deltax));
      DeltayR.setText(String.format("%,.2f",deltay));
@@ -381,7 +383,7 @@ public class Distancias extends javax.swing.JFrame {
     }
     
     public void limpiar(){
-        x1T.setText("");
+        x1T.setText("");//Deja el texto vacío
         X2T.setText("");
         Y1T.setText("");
         Y2T.setText("");
@@ -390,63 +392,63 @@ public class Distancias extends javax.swing.JFrame {
         DeltaxR.setText("");
         DeltayR.setText("");
         DistanciaL.setText("");
-        Resultados.setVisible(false);
+        Resultados.setVisible(false); //Oculta el panel Resultados
     }
     public void validar(){
         String mensaje;
-        double min = -999999999.99, max = 999999999.99;
-        if((x1T.getText().trim().isEmpty()) || (X2T.getText().trim().isEmpty()) || (Y1T.getText().trim().isEmpty()) || (Y2T.getText().trim().isEmpty())){
+        double min = -999999999.99, max = 999999999.99; //Definimos el límite para que el cálculo no de infinity o rompa el programa al calcular
+        if((x1T.getText().trim().isEmpty()) || (X2T.getText().trim().isEmpty()) || (Y1T.getText().trim().isEmpty()) || (Y2T.getText().trim().isEmpty())){//Válida que los campos no estén vacíos
         mensaje = "Complete toda la información para continuar";
         limpiar();
-        cuadrodedialogo(mensaje);
+        cuadrodedialogo(mensaje);//Pasa los párametros para mostrar el cuadro de diálogo
         }
-        else if(Y1T.getText().equals(Y2T.getText())){
+        else if(Y1T.getText().equals(Y2T.getText())){ //Válida que las coordenadas no esten encimadas
             mensaje = "No sé puede realizar el cálculo con una coordenada sobre el otro";
             limpiar();
             cuadrodedialogo(mensaje);
         }
-        else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){
+        else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){//Válida que las coordenadas no sean iguales
             mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";
             limpiar();
             cuadrodedialogo(mensaje);
         }
         else if((Double.parseDouble(x1T.getText())<min || Double.parseDouble(x1T.getText())>max) || (Double.parseDouble(X2T.getText())<min || Double.parseDouble(X2T.getText())>max) || (Double.parseDouble(Y1T.getText())<min || Double.parseDouble(Y1T.getText())>max) || (Double.parseDouble(Y2T.getText())<min || Double.parseDouble(Y2T.getText())>max)){
-            mensaje = String.format("Los puntos no pueden ser menores a  %,.2f ni mayores a %,.2f", min  , max);
+            mensaje = String.format("Los puntos no pueden ser menores a  %,.2f ni mayores a %,.2f", min  , max);//Indica el valor máximo y mínimo para no romper el programa
             limpiar();
             cuadrodedialogo(mensaje);
         }
-        else{
+        else{//Si no es ningúno de los casos no permitidos continua con el cálculo
             calcular();
             Resultados.setVisible(true);
         }
     }
     
-    public void cuadrodedialogo(String mensaje){
-        UIManager.put("OptionPane.background",new Color(0,153,0));
-        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    public void cuadrodedialogo(String mensaje){//Recibe el párametro de donde es llamada la función y la asigna a una variable
+        UIManager.put("OptionPane.background",new Color(0,153,0));//Le da un color verde al fondo 
+        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);//Crea nuestro cuadro de diálogo componente padre o ubicación, mensaje,título, tipo de ciadro de diálogo
     }
     
-    public void keyevent(java.awt.event.KeyEvent evt, JTextField campo){
+    public void keyevent(java.awt.event.KeyEvent evt, JTextField campo){//Obteiene el elemento a válidar
         char c = evt.getKeyChar();
-            String texto = campo.getText();
-            int cursor = campo.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.' && c!= '-') {
-                evt.consume();
+        String texto = campo.getText();
+        int cursor = campo.getCaretPosition();//Obtiene la posición
+            if (!Character.isDigit(c) && c != '.' && c!= '-') {// Solo permite números, punto decimal y signo negativo
+                evt.consume(); //Impide que aparezca en el JTextField
                 return;
             }
             if(c == '-'){
-                if(cursor != 0 || texto.contains("-")){
+                if(cursor != 0 || texto.contains("-")){//Valida que el signo negativo solo pueda escribirse al inicio y que no se repita más de una vez
                     evt.consume();
                 }
                 return;
             }
-            if (c == '.') {
+            if (c == '.') {// Valida que solo exista un punto
                 if (texto.contains(".") || (texto.length() - cursor) > 2) {
                     evt.consume();
                     return;
                 }
             }
-            if (texto.contains(".")) {
+            if (texto.contains(".")) {// Limita la cantidad de decimales a dos cifras después del punto
                 int posicionPunto = texto.indexOf('.');
                 if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
                     evt.consume();
