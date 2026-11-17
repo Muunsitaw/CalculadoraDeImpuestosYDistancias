@@ -368,7 +368,7 @@ public class Distancias extends javax.swing.JFrame {
     
     public void calcular(){
      double x1, x2, y1, y2, deltax, deltay, distancia; 
-     x1 = Double.parseDouble(x1T.getText());
+     x1 = Double.parseDouble(x1T.getText());//Obtiene el texto y lo convierte a Double
      y1 = Double.parseDouble(Y1T.getText());
      x2 = Double.parseDouble(X2T.getText());
      y2 = Double.parseDouble(Y2T.getText());
@@ -377,7 +377,7 @@ public class Distancias extends javax.swing.JFrame {
      distancia = Math.sqrt(deltax * deltax + deltay * deltay);
      Coordenada1R.setText(String.format("%,.2f , %,.2f",x1,y1));//Solo muestra dos decimales, separa el número por comas y muestra los números grandes sin notación científica
      Coordenada2R.setText(String.format("%,.2f , %,.2f",x2,y2));
-     DeltaxR.setText(String.format("%,.2f",deltax));
+     DeltaxR.setText(String.format("%,.2f",deltax));//Muestra la información en la etiqueta
      DeltayR.setText(String.format("%,.2f",deltay));
      DistanciaL.setText(String.format("Distancia: %,.2f u",distancia));
     }

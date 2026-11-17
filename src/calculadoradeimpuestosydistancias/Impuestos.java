@@ -1,17 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+/*Propósito:
+Calcular el impuesto de un producto considerando si el comprador es un estudiante acreditado y si el producto pertenece al catálogo educativo.
+Entradas:
+- Precio del producto.
+- Condición de estudiante acreditado (Sí o No).
+- Pertenencia al catálogo educativo (Sí o No).
+Salidas:
+- Tipo de exención aplicada.
+- Condiciones evaluadas.
+- Costo inicial.
+- Porcentaje de impuesto.
+- Impuesto calculado.
+- Precio total a pagar.*/
 package calculadoradeimpuestosydistancias;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-/**
- *
- * @author munsi_gm6lqlf
- */
 public class Impuestos extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Impuestos.class.getName());
@@ -304,7 +309,7 @@ public class Impuestos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        System.exit(0);
+        System.exit(0); //Sale de la ventana actual
     }//GEN-LAST:event_SalirActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
@@ -314,28 +319,28 @@ public class Impuestos extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        limpiar();
+        limpiar();//Llama a ala función limpiar
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void PrecioTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioTKeyTyped
             char c = evt.getKeyChar();
             String texto = PrecioT.getText();
             int cursor = PrecioT.getCaretPosition();
-            if (!Character.isDigit(c) && c != '.') {
+            if (!Character.isDigit(c) && c != '.') {// Solo permite número y punto decimal
+                evt.consume();//Impide que aparezca en el JTextField
+                return;
+            }
+            if ((texto.isEmpty() || cursor == 0) && (c == '0' || c == '.')) {// Evita que el valor inicie con 0 o con punto decima
                 evt.consume();
                 return;
             }
-            if ((texto.isEmpty() || cursor == 0) && (c == '0' || c == '.')) {
-                evt.consume();
-                return;
-            }
-            if (c == '.') {
+            if (c == '.') {// Evita que se escriban varios puntos
                 if (texto.contains(".") || (texto.length() - cursor) > 2) {
                     evt.consume();
                     return;
                 }
             }
-            if (texto.contains(".")) {
+            if (texto.contains(".")) {// Limita la cantidad de decimales a dos cifras
                 int posicionPunto = texto.indexOf('.');
                 if (cursor > posicionPunto && texto.substring(posicionPunto + 1).length() >= 2) {
                     evt.consume();
@@ -345,8 +350,6 @@ public class Impuestos extends javax.swing.JFrame {
 
     private void CalcularBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularBActionPerformed
         validar();
-        /*impuesto();
-        Resultados.setVisible(true);*/
     }//GEN-LAST:event_CalcularBActionPerformed
 
     private void PrecioTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioTActionPerformed
@@ -382,8 +385,8 @@ public class Impuestos extends javax.swing.JFrame {
         double impuesto, precioinicial, preciofinal;
         String tipoImpuesto, proposicion;
         int porcentaje;
-        precioinicial = Double.parseDouble(PrecioT.getText());
-        if(SiErb.isSelected() && SiPrb.isSelected()){
+        precioinicial = Double.parseDouble(PrecioT.getText());//Obtiene el texto y lo convierte a Double
+        if(SiErb.isSelected() && SiPrb.isSelected()){//Válida la selección del usuario
             impuesto = precioinicial * 0;
             tipoImpuesto = "Excención total";
             porcentaje = 0;
@@ -407,9 +410,9 @@ public class Impuestos extends javax.swing.JFrame {
         }
         preciofinal = precioinicial + impuesto;
         
-        LeyR.setText(tipoImpuesto);
+        LeyR.setText(tipoImpuesto);//Muestra la información en la etiqueta
         CondicionesR.setText(proposicion);
-        CostoiR.setText(String.format("$%,.2f",precioinicial));
+        CostoiR.setText(String.format("$%,.2f",precioinicial));//Solo muestra dos decimales, separa el número por comas y muestra los números grandes sin notación científica
         PorcentajeiR.setText(porcentaje+"%");
         ImpuestoR.setText(String.format("$%,.2f",impuesto));
         TotalL.setText(String.format("Total: $%,.2f",preciofinal));
@@ -417,34 +420,34 @@ public class Impuestos extends javax.swing.JFrame {
     
     public void validar(){
             String mensaje;
-            if((PrecioT.getText().trim().isEmpty()) || (EstudianteGrb.getSelection() == null) || (ProductoGrb.getSelection() == null)){
-                mensaje = "Complete toda la información para continuar";
+            if((PrecioT.getText().trim().isEmpty()) || (EstudianteGrb.getSelection() == null) || (ProductoGrb.getSelection() == null)){//Válida que los campos no estén vacíos
+                mensaje = "Complete toda la información para continuar";//Pasa los párametros para mostrar el cuadro de diálogo
                 cuadrodedialogo(mensaje);
                 limpiar();
             }
-            else if(Double.parseDouble(PrecioT.getText())<100){
+            else if(Double.parseDouble(PrecioT.getText())<100){//Válida que el monto no sea menor a 100
                 mensaje = "Ingrese un precio mayor a $100";
                 cuadrodedialogo(mensaje);
                 limpiar();
             }
-            else if(Double.parseDouble(PrecioT.getText())>999999999999999.99){
+            else if(Double.parseDouble(PrecioT.getText())>999999999999999.99){//Indica el valor máximo para no romper el programa
                 mensaje = "El precio debe ser menor que $999,999,999,999,999.99";
                 cuadrodedialogo(mensaje);
                 limpiar();
             }
-            else{
+            else{//Si es el caso ideal continua con el calculo
                 impuesto();
-                Resultados.setVisible(true);
+                Resultados.setVisible(true); //Muestra el panel de resultados
             }
     }
             
-    public void cuadrodedialogo(String mensaje){
-              UIManager.put("OptionPane.background",new Color(0,153,0));
-              JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    public void cuadrodedialogo(String mensaje){//Recibe el párametro de donde es llamada la función y la asigna a una variable
+              UIManager.put("OptionPane.background",new Color(0,153,0));//Le da un color verde al fondo 
+              JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);//Crea nuestro cuadro de diálogo componente padre o ubicación, mensaje,título, tipo de ciadro de diálogo
             }
     public void limpiar(){
-        PrecioT.setText("");
-        EstudianteGrb.clearSelection(); // Nombre de tu ButtonGroup de Estudiante
+        PrecioT.setText("");//Limpia la etiqueta y al selección de los botones
+        EstudianteGrb.clearSelection(); 
         ProductoGrb.clearSelection();
         Resultados.setVisible(false);
     }
