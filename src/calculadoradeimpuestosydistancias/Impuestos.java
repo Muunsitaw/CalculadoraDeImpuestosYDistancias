@@ -169,7 +169,7 @@ public class Impuestos extends javax.swing.JFrame {
         SiErb.setForeground(new java.awt.Color(120, 130, 120));
         SiErb.setText("Sí");
         SiErb.setOpaque(true);
-        Calcular.add(SiErb, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 211, 50, 30));
+        Calcular.add(SiErb, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 211, 70, 30));
 
         NoErb.setBackground(new java.awt.Color(0, 35, 15));
         EstudianteGrb.add(NoErb);
