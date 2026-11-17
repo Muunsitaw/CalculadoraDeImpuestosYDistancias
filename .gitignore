@@ -2,3 +2,5 @@
 /dist/
 /nbproject/private/
 *.class
+/Impuestos/nbproject/private/
+/Impuestos/build/
