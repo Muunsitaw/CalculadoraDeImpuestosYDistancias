@@ -374,7 +374,7 @@ public class Distancias extends javax.swing.JFrame {
      y2 = Double.parseDouble(Y2T.getText());
      deltax = x2 - x1;
      deltay = y2 - y1;
-     distancia = Math.sqrt(deltax * deltax + deltay * deltay);
+     distancia = Math.sqrt(Math.pow(deltax,2)+ Math.pow(deltay, 2));
      Coordenada1R.setText(String.format("%,.2f , %,.2f",x1,y1));//Solo muestra dos decimales, separa el número por comas y muestra los números grandes sin notación científica
      Coordenada2R.setText(String.format("%,.2f , %,.2f",x2,y2));
      DeltaxR.setText(String.format("%,.2f",deltax));//Muestra la información en la etiqueta
@@ -401,11 +401,6 @@ public class Distancias extends javax.swing.JFrame {
         mensaje = "Complete toda la información para continuar";
         limpiar();
         cuadrodedialogo(mensaje);//Pasa los párametros para mostrar el cuadro de diálogo
-        }
-        else if(Y1T.getText().equals(Y2T.getText())){ //Válida que las coordenadas no esten encimadas
-            mensaje = "No sé puede realizar el cálculo con una coordenada sobre el otro";
-            limpiar();
-            cuadrodedialogo(mensaje);
         }
         else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){//Válida que las coordenadas no sean iguales
             mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";
