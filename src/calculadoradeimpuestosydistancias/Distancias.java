@@ -395,12 +395,22 @@ public class Distancias extends javax.swing.JFrame {
         Resultados.setVisible(false); //Oculta el panel Resultados
     }
     public void validar(){
-        String mensaje;
+        String mensaje;;
         double min = -999999999.99, max = 999999999.99; //Definimos el límite para que el cálculo no de infinity o rompa el programa al calcular
         if((x1T.getText().trim().isEmpty()) || (X2T.getText().trim().isEmpty()) || (Y1T.getText().trim().isEmpty()) || (Y2T.getText().trim().isEmpty())){//Válida que los campos no estén vacíos
         mensaje = "Complete toda la información para continuar";
         limpiar();
         cuadrodedialogo(mensaje);//Pasa los párametros para mostrar el cuadro de diálogo
+        }
+        else if (x1T.getText().equals("-") || Y1T.getText().equals("-") || X2T.getText().equals("-") || Y2T.getText().equals("-")) {
+               mensaje = "Ingrese coordenadas válidas";
+               limpiar();
+               cuadrodedialogo(mensaje);
+           }
+        else if (x1T.getText().equals(".") || Y1T.getText().equals(".") || X2T.getText().equals(".") || Y2T.getText().equals(".")) {
+            mensaje = "Ingrese coordenadas válidas";
+            limpiar();
+            cuadrodedialogo(mensaje);
         }
         else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){//Válida que las coordenadas no sean iguales
             mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";

@@ -388,25 +388,25 @@ public class Impuestos extends javax.swing.JFrame {
         precioinicial = Double.parseDouble(PrecioT.getText());//Obtiene el texto y lo convierte a Double
         if(SiErb.isSelected() && SiPrb.isSelected()){//Válida la selección del usuario
             impuesto = precioinicial * 0;
-            tipoImpuesto = "Excención total";
+            tipoImpuesto = "Exención total";
             porcentaje = 0;
-            proposicion = "Es un estudiante acreditado y el producto está dentro del cátalogo educativo";
+            proposicion = "Es un estudiante acreditado y el producto está dentro del catálogo educativo";
         }
         else if((NoErb.isSelected() && SiPrb.isSelected()) || (SiErb.isSelected() && NoCrb.isSelected())){
             impuesto = precioinicial * 0.08;
-            tipoImpuesto = "Excención parcial";
+            tipoImpuesto = "Exención parcial";
             porcentaje = 8;
             if(NoErb.isSelected() && SiPrb.isSelected()){
-                proposicion = "No es un estudiante acreditado y el producto está dentro del cátalogo educativo";
+                proposicion = "No es un estudiante acreditado y el producto está dentro del catálogo educativo";
             }else{
-                proposicion = "Es un estudiante acreditado y el producto no está dentro del cátalogo educativo";
+                proposicion = "Es un estudiante acreditado y el producto no está dentro del catálogo educativo";
             }
         }
         else{
             impuesto = precioinicial * 0.16;
-            tipoImpuesto = "Sin excención";
+            tipoImpuesto = "Sin exención";
             porcentaje = 16;
-            proposicion = "No es un estudiante acreditado y el producto no está dentro del cátalogo educativo";
+            proposicion = "No es un estudiante acreditado y el producto no está dentro del catálogo educativo";
         }
         preciofinal = precioinicial + impuesto;
         
