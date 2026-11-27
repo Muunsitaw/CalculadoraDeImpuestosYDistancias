@@ -412,6 +412,11 @@ public class Distancias extends javax.swing.JFrame {
             limpiar();
             cuadrodedialogo(mensaje);
         }
+        else if (x1T.getText().equals("-.") || Y1T.getText().equals("-.") || X2T.getText().equals("-.") || Y2T.getText().equals("-.")) {
+               mensaje = "Ingrese coordenadas válidas";
+               limpiar();
+               cuadrodedialogo(mensaje);
+           }
         else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){//Válida que las coordenadas no sean iguales
             mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";
             limpiar();
@@ -449,8 +454,8 @@ public class Distancias extends javax.swing.JFrame {
             }
             if (c == '.') {// Valida que solo exista un punto
                 if (texto.contains(".") || (texto.length() - cursor) > 2) {
-                    evt.consume();
-                    return;
+                evt.consume();
+                return;
                 }
             }
             if (texto.contains(".")) {// Limita la cantidad de decimales a dos cifras después del punto
