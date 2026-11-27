@@ -417,7 +417,7 @@ public class Distancias extends javax.swing.JFrame {
                limpiar();
                cuadrodedialogo(mensaje);
            }
-        else if(Y1T.getText().equals(Y2T.getText()) && x1T.getText().equals(X2T.getText())){//Válida que las coordenadas no sean iguales
+        else if((Double.parseDouble(x1T.getText()) == Double.parseDouble(X2T.getText())) && (Double.parseDouble(Y1T.getText()) == Double.parseDouble(Y2T.getText()))){
             mensaje = "No se puede realizar el cálculo de dos coordenadas iguales";
             limpiar();
             cuadrodedialogo(mensaje);
